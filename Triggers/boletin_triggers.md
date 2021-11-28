@@ -24,7 +24,7 @@ end controlar_comisiones;
 
 ```
 
-- Este trigger afecta a las insersiones o actualizaciones de la tabla "_EMP_", esto se hace **después** de la operación y afecta a cada fila.
+- Este trigger afecta a las inserciones o actualizaciones de la tabla "_EMP_", esto se hace **después** de la operación y afecta a cada fila.
 
 - Se crea una variable que tenga el mismo tipo que el número de departamento de la tabla dept (dept.deptno // tabla.campo).
 
@@ -78,7 +78,7 @@ create table audit_emp (
 Procedimiento:
 
 ```
-create or replace procedure insertar_auditoria (p_tipo varchar2(12))
+create or replace procedure insertar_auditoria (p_tipo varchar2)
 is
 begin
 	insert into audit_emp values(user, sysdate, p_tipo);
@@ -99,11 +99,11 @@ declare
 	v_operacion varchar2(12);
 begin
 	if inserting then
-		v_operacion:='INSERTADO'
+		v_operacion:='INSERTADO';
 	elsif updating then
-		v_operacion:='ACTUALIZADO'
+		v_operacion:='ACTUALIZADO';
 	elsif deleting then
-		v_operacion:='BORRADO'
+		v_operacion:='BORRADO';
 	end if;
 	insertar_auditoria(v_operacion);
 end AuditarEmp;
@@ -115,6 +115,25 @@ end AuditarEmp;
 - En los condicionales definimos los tres posibles tipos de operación que se contemplan y este se almacena en la variable.
 
 - Tras los condicionales, se llama al procedimiento dándole el registro de la variable para que pueda tener un correcto funcionamiento.
+
+
+### COMPROBACIONES
+
+insert into emp values(7980,'AXEL','SALESMAN',null,to_date('01-DIC-1980','DD-MM-YYYY'),1650,350,30);
+
+![](imagenes/t7.png)
+
+update emp set emp.comm=550 where emp.ename='AXEL';
+
+![](imagenes/t8.png)
+
+delete from emp where ename='AXEL';
+
+![](imagenes/t9.png)
+
+Ahora vamos a ver la tabla que ha recibido los registros:
+
+![](imagenes/t10.png)
 
 
 ## 3. Haz un trigger que controle si los sueldos están en los siguientes rangos:
