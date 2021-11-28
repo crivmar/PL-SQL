@@ -36,33 +36,45 @@ end controlar_comisiones;
 
 (NO DEBE FUNCIONAR)
 
+```
 insert into emp values (7930,‘LOMMS’, ’SALESMAN’, null, to_date(‘18-DIC-1980’, ‘DD-MON-YYYY’), 1300,null,30);
+```
 
 ![](imagenes/t1.png)
 
+```
 insert into emp values (7930, ‘LOMMS’, ’SALESMAN’, null, to_date(‘18-DIC-1980’, ‘DD-MON-YYYY’), 1300, 560, 20);
+```
 
 ![](imagenes/t2.png)
 
+```
 insert into emp values (7930, ‘LOMMS’, ’MANAGER’, null, to_date(‘18-DIC-1980’, ‘DD-MON-YYYY’), 1300, 560, 30);
+```
 
 ![](imagenes/t3.png)
 
+```
 update emp set emp.comm=300 where emp.ename='JAMES';
+```
 
 ![](imagenes/t4.png)
 
 (DEBE FUNCIONAR)
 
+```
 insert into emp values(7980,'AXEL','SALESMAN',null,to_date('01-DIC-1980','DD-MM-YYYY'),1650,350,30);
+```
 
 ![](imagenes/t5.png)
 
+```
 insert into emp values(7980,'AXEL','SALESMAN',null,to_date('01-DIC-1980','DD-MM-YYYY'),1650,0,30);
+```
 
 ![](imagenes/t6.png)
 
-## 2. Registrar todas las operaciones sobre la tabla EMP de SCOTT en una tabla llamada AUDIT_EMP donde se guarde usuario, fecha, tipo de operación, fila afectada. (**POR PROBAR**)
+## 2. Registrar todas las operaciones sobre la tabla EMP de SCOTT en una tabla llamada AUDIT_EMP donde se guarde usuario, fecha, tipo de operación, fila afectada.
 
 ```
 create table audit_emp (
@@ -119,15 +131,21 @@ end AuditarEmp;
 
 ### COMPROBACIONES
 
+```
 insert into emp values(7980,'AXEL','SALESMAN',null,to_date('01-DIC-1980','DD-MM-YYYY'),1650,350,30);
+```
 
 ![](imagenes/t7.png)
 
+```
 update emp set emp.comm=550 where emp.ename='AXEL';
+```
 
 ![](imagenes/t8.png)
 
+```
 delete from emp where ename='AXEL';
+```
 
 ![](imagenes/t9.png)
 
@@ -138,7 +156,11 @@ Ahora vamos a ver la tabla que ha recibido los registros:
 
 ## 3. Haz un trigger que controle si los sueldos están en los siguientes rangos:
 
-CLERK: 800 – 1100
-ANALYST: 1200 – 1600
-MANAGER:1800 – 2000
+|JOB|RANGO|
+|------|----------|
+|CLERK| 800 – 1100|
+|ANALYST| 1200 – 1600|
+|MANAGER|1800 – 2000|
+
+
 
