@@ -30,7 +30,7 @@ end controlar_comisiones;
 
 - En el cuerpo del trigger, lo primero es hacer un "_select_" que alamcene en la variable "_v_deptno_" el número de departamento cuyo nombre es "_SALES_"
 
-- Lo siguiente, que activará el trigger es si el nuevo valor "**job**" insertado/actualizado es "**distinto**" a "*SALESMAN*" **ó** el nuevo "**departamento**" es distinto a la varibale y, además, la nueva comisión "**comm**" no es nula (Podría darse el caso de que no metiéramos un valor a este campo y los vendedores no pueden tener un valor nulo, al menos se debe insertar un 0 (?)). Si algo de esto no se cumple salta una excepción avisando del problema.
+- Lo siguiente, que activará el trigger es si el nuevo valor "**job**" insertado/actualizado es "**distinto**" a "*SALESMAN*" **ó** el nuevo "**departamento**" es distinto a la varibale y, además, la nueva comisión "**comm**" no es nula (Podría darse el caso de que no metiéramos un valor a este campo y los vendedores no pueden tener un valor nulo, al menos se debe insertar un 0). Si algo de esto no se cumple salta una excepción avisando del problema.
 
 ### COMPROBACIONES
 
@@ -58,6 +58,9 @@ insert into emp values(7980,'AXEL','SALESMAN',null,to_date('01-DIC-1980','DD-MM-
 
 ![](imagenes/t5.png)
 
+insert into emp values(7980,'AXEL','SALESMAN',null,to_date('01-DIC-1980','DD-MM-YYYY'),1650,0,30);
+
+![](imagenes/t6.png)
 
 ## 2. Registrar todas las operaciones sobre la tabla EMP de SCOTT en una tabla llamada AUDIT_EMP donde se guarde usuario, fecha, tipo de operación, fila afectada. (**POR PROBAR**)
 
